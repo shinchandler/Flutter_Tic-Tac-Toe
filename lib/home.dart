@@ -8,9 +8,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+   String displayXO = '';
   @override
   Widget build(BuildContext context) {
-    String displayXO = '';
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.grey[800],
@@ -18,16 +18,26 @@ class _HomePageState extends State<HomePage> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemCount: 9,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade700)),
-                child: Center(
-                    child: Text(
-                  displayXO,
-                  style: const TextStyle(fontSize: 40, color: Colors.white),
-                )),
+              return GestureDetector(
+                onTap: _tapped,
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade700)),
+                  child: Center(
+                      child: Text(
+                    displayXO,
+                    style: const TextStyle(fontSize: 40, color: Colors.white),
+                  )),
+                ),
               );
             },
           )),
     );
+  }
+
+  void _tapped() {
+    setState(() {
+      displayXO = 'X';
+    });
+    
   }
 }

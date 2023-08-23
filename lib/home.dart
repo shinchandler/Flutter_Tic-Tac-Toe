@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   String displayXO = '';
+  List<String> displayXO = ['','','','','','','','',''];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,12 +19,14 @@ class _HomePageState extends State<HomePage> {
             itemCount: 9,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: _tapped,
+                onTap: () {
+                  _tapped(index);
+                },
                 child: Container(
                   decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade700)),
                   child: Center(
                       child: Text(
-                    displayXO,
+                    displayXO[index],
                     style: const TextStyle(fontSize: 40, color: Colors.white),
                   )),
                 ),
@@ -34,10 +36,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _tapped() {
+  void _tapped (int index) {
     setState(() {
-      displayXO = 'X';
+      displayXO[index] ='O';
     });
-    
   }
 }

@@ -55,6 +55,13 @@ class _HomePageState extends State<HomePage> {
         displayXO[index] = 'X';
       }
       oTurn = !oTurn;
+      _checkWinner();
     });
   }
 }
+
+void _checkWinner() {
+  _display();
+}
+
+void _display() {}

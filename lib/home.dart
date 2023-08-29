@@ -49,14 +49,14 @@ class _HomePageState extends State<HomePage> {
 
   void _onTapped(index) {
     setState(() {
-      if (oTurn) {
+      if (oTurn && displayXO[index] == '' && displayXO[index] != 'X') {
         displayXO[index] = 'O';
-      } else {
+        oTurn = !oTurn;
+      } else if (!oTurn && displayXO[index] == '' && displayXO[index] != 'O') {
         displayXO[index] = 'X';
+        oTurn = !oTurn;
       }
-      oTurn = !oTurn;
       _checkWinner();
-      
     });
   }
 
@@ -95,5 +95,17 @@ class _HomePageState extends State<HomePage> {
             title: Text('Winner is :$winner'),
           );
         });
+    // displayXO = [
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   '',
+    //   ''
+    // ];
   }
 }
